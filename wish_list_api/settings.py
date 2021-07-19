@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+import os
+import dj_database_url
 from datetime import timedelta
 from pathlib import Path
 import environ
@@ -84,13 +86,15 @@ WSGI_APPLICATION = 'wish_list_api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env('DB_NAME'),
-        "USER": env('DB_USERNAME'),
-        "PASSWORD": env('DB_PASSWORD'),
-        "HOST": env('DB_HOST'),
-        "PORT": env('DB_PORT'),
+        'NAME': env('DB_NAME', None),
+        "USER": env('DB_USERNAME', None),
+        "PASSWORD": env('DB_PASSWORD', None),
+        "HOST": env('DB_HOST', None),
+        "PORT": env('DB_PORT', None),
     }
 }
+db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
+DATABASES["default"].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
