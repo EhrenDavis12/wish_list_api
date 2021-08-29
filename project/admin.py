@@ -1,3 +1,5 @@
 from django.contrib import admin
+from project.models import AppGroup, GroupMember
 
-# Register your models here.
+admin.site.register(AppGroup)
+admin.site.register(GroupMember)

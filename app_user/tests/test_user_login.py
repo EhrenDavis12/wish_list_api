@@ -1,5 +1,5 @@
 from rest_framework.test import APIClient
-from project.tests.base_test import NewUserTestCase
+from app_user.tests.base_test import NewUserTestCase
 
 class UserLoginTestCase(NewUserTestCase):
     def setUp(self) -> None:
