@@ -2,7 +2,6 @@ from django.conf import settings
 from project.tests.base_test import LoggedInWithMultiUserTestCase, TestUrlMixin
 
 
-
 class AppGroupTestUtilsMixin(TestUrlMixin):
     url = 'app_group'
 
